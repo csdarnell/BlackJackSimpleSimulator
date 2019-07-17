@@ -11,12 +11,12 @@ public interface OtherParticipantSeat {
     /**
      * @return String return the Participant's name
      */
-    public String getParticipantName();
+    String getParticipantName();
 
     /**
      * @return String return the Participant's type
      */
-    public String getParticipantType();
+    String getParticipantType();
 
     /**
      * Allow other Participants to view the current Participants cards, based on the current state of the game

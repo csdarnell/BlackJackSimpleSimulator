@@ -11,13 +11,13 @@ public interface DealerSeatInterface {
      * Provide a new Card to the Seat
      * @param card
      */
-    public void addCard(Card card);
+    void addCard(Card card);
 
     /**
      * Have the Seat return all cards to the Table
      * @return all Cards held by the Seat
      */
-    public ArrayList<Card> returnCards();
+    ArrayList<Card> returnCards();
 
 
 }

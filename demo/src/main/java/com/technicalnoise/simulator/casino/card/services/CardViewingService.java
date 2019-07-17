@@ -10,15 +10,15 @@ public interface CardViewingService {
      * Initiate a Card showing action; prepares the presentation output for cards to be listed
      * @param {string} message 
      */
-    public void initiateCardShowing(String message);
+    void initiateCardShowing(String message);
     /**
      * Present a card to the presentation output
      * @param card
      */
-    public void showCard(Card card);
+    void showCard(Card card);
     /**
      * Finish the Card showing action;
      * @param message
      */
-    public void endCardShowing(String message);
+    void endCardShowing(String message);
 }
