@@ -9,6 +9,7 @@ public abstract class Player extends CardParticipant {
 
     public Player(String name, Seat seat, ArrayList<OtherParticipantSeat> participantSeats) {
         super(name, seat, participantSeats);
+        this.playerType = "Player";
     }
 
     public void performTurn() {

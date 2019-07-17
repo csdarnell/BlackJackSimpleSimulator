@@ -1,6 +1,7 @@
 package com.technicalnoise.simulator.casino.card;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import com.technicalnoise.simulator.casino.card.TableCardManagement;
 
@@ -9,7 +10,7 @@ import com.technicalnoise.simulator.casino.card.TableCardManagement;
  */
 public abstract class Table implements TableCardManagement {
     // private Dealer dealer;
-    private ArrayList<Seat> seats;
+    private ArrayList<OtherParticipantSeat> seats;
 
     // TODO:  Manage the Deck as a QUEUE!!!  Is there a Queue in this language????
     private ArrayList<Card> deck;
@@ -36,14 +37,14 @@ public abstract class Table implements TableCardManagement {
     /**
      * @return ArrayList<Seat> return the seats
      */
-    public ArrayList<Seat> getSeats() {
+    public ArrayList<OtherParticipantSeat> getSeats() {
         return seats;
     }
 
     /**
      * @param seats the seats to set
      */
-    public void setSeats(ArrayList<Seat> seats) {
+    public void setSeats(ArrayList<OtherParticipantSeat> seats) {
         this.seats = seats;
     }
 
@@ -68,4 +69,22 @@ public abstract class Table implements TableCardManagement {
         return gameOver;
     }
 
+    // TODO:  Whenever a card movement action occurs, refesh the table
+
+
+    /**
+     * Display the visible contents of the table
+     */
+    public void showTable() {
+        System.out.println("--- Table Contents ----------");
+        seats.forEach((s) -> {
+            System.out.println("------ Participant -------");
+            System.out.println(String.format(Locale.US, "Player Name: {0}", s.getParticipantName()));
+            System.out.println(String.format(Locale.US, "Player Type: ", s.getParticipantType()));
+            System.out.println("--------- Hand ----");
+            s.ViewCards(null);
+            System.out.println("");
+        });
+
+    }
 }

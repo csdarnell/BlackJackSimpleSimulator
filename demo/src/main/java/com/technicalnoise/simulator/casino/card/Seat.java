@@ -10,14 +10,14 @@ import com.technicalnoise.simulator.casino.card.services.*;
  */
 public abstract class Seat implements DealerSeatInterface, OtherParticipantSeat {
     Table gameTable;
-    Participant player;
+    Participant participant;
     CardViewingService cardViewingService;
     ArrayList<Card> visibleCards = new ArrayList<Card>();
     ArrayList<Card> hiddenCards = new ArrayList<Card>();;
     
     public Seat(Table table, Participant player, CardViewingService cardViewingService) {
         this.gameTable = table;
-        this.player = player;
+        this.participant = player;
         this.cardViewingService = cardViewingService;
     }
     
@@ -43,23 +43,40 @@ public abstract class Seat implements DealerSeatInterface, OtherParticipantSeat 
 
     }
 
+    /**
+     * @return String return the Participant's name
+     */
+    public String getParticipantName() {
+        return this.participant.getName();
+    }
+
+    /**
+     * @return String return the Participant's type
+     */
+    public String getParticipantType(){
+        return this.participant.getPlayerType();
+    }
 
     /**
      * Allow other Participants to view the current Participants cards, based on the current state of the game
      * @param requestingParticipant
      */
     public void ViewCards(Participant requestingParticipant) {
-        cardViewingService.initiateCardShowing(String.format("Cards for player {0}", player.getName()));
+        cardViewingService.initiateCardShowing(String.format("Cards for player {0}", participant.getName()));
         int cardsValue = 0;
         for ( Card card : visibleCards) {
             cardViewingService.showCard(card);
             cardsValue += card.getValue();
 
         }
-        if ((requestingParticipant == this.player) || (gameTable.isGameOver())){
-            for ( Card card : hiddenCards) {
+        boolean showHiddenCards = (requestingParticipant != null && requestingParticipant == this.participant) || (gameTable.isGameOver());
+        Card dummyCard = new Card("X","X",0);
+        for ( Card card : hiddenCards) {
+            if (showHiddenCards) {
                 cardViewingService.showCard(card);
                 cardsValue += card.getValue();
+            } else {
+                cardViewingService.showCard(dummyCard);
             }
         }
 

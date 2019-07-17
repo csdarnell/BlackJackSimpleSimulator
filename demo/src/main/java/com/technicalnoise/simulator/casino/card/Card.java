@@ -1,9 +1,22 @@
 package com.technicalnoise.simulator.casino.card;
 
 public class Card {
+    private String suit;
     private String face;
-    private short value;
+    private int value;
 
+    public Card (String suit, String face, int value) {
+        this.suit = suit;
+        this.face = face;
+        this.value = value;
+    }
+
+    /**
+     * @return the suit
+     */
+    public String getSuit() {
+        return suit;
+    }
     /**
      * @return the face
      */
@@ -12,23 +25,9 @@ public class Card {
     }
 
     /**
-     * @param face the face to set
-     */
-    public void setFace(String face) {
-        this.face = face;
-    }
-
-    /**
      * @return the value
      */
-    public short getValue() {
+    public int getValue() {
         return value;
-    }
-
-    /**
-     * @param value the value to set
-     */
-    public void setValue(short value) {
-        this.value = value;
     }
 }
