@@ -9,12 +9,17 @@ To support this "casino" idea, the concept of a Participant has been separated f
 To continue the "casino" idea:
 
 - card games would introduce a common concept of a Table, which is capable of managing the card deck for any type of card game.
+
 -- The Table must manage the card deck, including shuffling
 -- The Table must provide an interface for a Dealer to move cards around
+
 --- Move cards from the deck to a Seat's hand
 --- Retrieve cards from all Seats
+
 -- The Table must support a discard pile, incase several rounds occur in between shuffling
+
 - card games would introduce a common concept of a Seat, which is responsible for managing a Participant's card hand
 -- Participants actually don't directly interact with their card hand.  
 -- most card games support visible and hidden cards, so the seat's card management differenciates them.
+
 - Dealers and Players are very similar, so they are based on a Participant class
