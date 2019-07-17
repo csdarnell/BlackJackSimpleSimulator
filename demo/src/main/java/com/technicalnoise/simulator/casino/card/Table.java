@@ -1,6 +1,7 @@
 package com.technicalnoise.simulator.casino.card;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import com.technicalnoise.simulator.casino.card.TableCardManagement;
@@ -82,7 +83,11 @@ public abstract class Table implements TableCardManagement {
             System.out.println(String.format(Locale.US, "Player Name: {0}", s.getParticipantName()));
             System.out.println(String.format(Locale.US, "Player Type: ", s.getParticipantType()));
             System.out.println("--------- Hand ----");
-            s.ViewCards(null);
+            List<Card> participantCards = s.viewCards(null);
+            for (Card c : participantCards) {
+                System.out.print(String.format("|{0} {1}|", c.getFace(), c.getClass()));
+            }
+            
             System.out.println("");
         });
 

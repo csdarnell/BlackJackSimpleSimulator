@@ -1,5 +1,7 @@
 package com.technicalnoise.simulator.casino.card;
 
+import java.util.List;
+
 import com.technicalnoise.simulator.global.Participant;
 
 /**
@@ -22,6 +24,6 @@ public interface OtherParticipantSeat {
      * Allow other Participants to view the current Participants cards, based on the current state of the game
      * @param requestingParticipant
      */
-    void ViewCards(Participant requestingParticipant);
+    List<Card> viewCards(Participant requestingParticipant);
     
 }
