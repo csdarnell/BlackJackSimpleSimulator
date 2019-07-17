@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.technicalnoise.simulator.global.*;
-import com.technicalnoise.simulator.casino.card.services.*;
 
 /**
  * A Seat represents the "interface" between a Participant and the Table
