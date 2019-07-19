@@ -5,15 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 import com.technicalnoise.simulator.global.*;
+import com.technicalnoise.simulator.global.services.UserCommService;
 
 /**
  * A Seat represents the "interface" between a Participant and the Table
  */
-public abstract class Seat implements DealerSeatInterface, OtherParticipantSeat {
-    Table gameTable;
-    Participant participant;
-    ArrayList<Card> visibleCards = new ArrayList<Card>();
-    ArrayList<Card> hiddenCards = new ArrayList<Card>();;
+public abstract class Seat implements DealerSeatInteraction, PlayerSeat, OtherParticipantSeat {
+    private Table gameTable;
+    private Participant participant;
+    private ArrayList<Card> visibleCards = new ArrayList<Card>();
+    private ArrayList<Card> hiddenCards = new ArrayList<Card>();;
     
     public Seat(Table table, Participant player) {
         this.gameTable = table;
@@ -36,10 +37,6 @@ public abstract class Seat implements DealerSeatInterface, OtherParticipantSeat 
         hiddenCards.forEach((c) -> returnedCards.add(c));
         hiddenCards.clear();
         return Collections.unmodifiableList(returnedCards);
-    }
-
-    public void getHandValue() {
-
     }
 
     /**
@@ -79,9 +76,5 @@ public abstract class Seat implements DealerSeatInterface, OtherParticipantSeat 
 
         return Collections.unmodifiableList(viewableCards);
     }
-
-    // public void RequestCard();
-
-    // public ArrayList<Card> ReturnCards();
 
 }

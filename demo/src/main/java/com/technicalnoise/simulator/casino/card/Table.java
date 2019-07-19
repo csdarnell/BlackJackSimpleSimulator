@@ -14,31 +14,17 @@ public abstract class Table implements TableCardManagement {
     // private Dealer dealer;
     private ArrayList<OtherParticipantSeat> seats;
 
-    // TODO:  Manage the Deck as a QUEUE!!!  Is there a Queue in this language????
+    // TODO:  Manage the Deck as a QUEUE???  Maybe;  Is there a Queue in this language????
     private ArrayList<Card> deck = new ArrayList<Card>();
+    private ArrayList<Card> discard = new ArrayList<Card>();
 
     private boolean gameOver = false;
     
     public Table() {
         createDeck();
+        shuffleCardDeck();
     }
     
-
-
-    /**
-     * @return ArrayList<Card> return the deck
-     */
-    public ArrayList<Card> getDeck() {
-        return deck;
-    }
-
-    /**
-     * @param deck the deck to set
-     */
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
-    }
-
     /**
      * @return ArrayList<Seat> return the seats
      */
@@ -88,6 +74,10 @@ public abstract class Table implements TableCardManagement {
     */
     public void shuffleCardDeck() 
     { 
+        // If any cards in the discard pile, move them to the deck, first
+        discard.forEach((c) -> deck.add(c));
+        discard.clear();
+
         Random rand = new Random(); 
         for (int slot1 = 0; slot1 < deck.size(); slot1++) 
         { 
@@ -97,6 +87,44 @@ public abstract class Table implements TableCardManagement {
             deck.set(slot1, card); 
         } 
     } 
+
+    /**
+     * Get the next card from the Deck
+     * 
+     * @return Card The next card from the top of the deck
+     * @throws OutOfCardsException When there are no cards left in the deck
+     */
+    public Card getNextCard() throws OutOfCardsException {
+        if (deck.size() == 0) {
+            throw new OutOfCardsException("There are no cards left in the deck.");
+        }
+        return deck.remove(deck.size() - 1);
+    }
+
+    /**
+     * Allow a Dealer to provide cards back to the Table, sending them to a Discard pile
+     * @param discardedCards
+     */
+    public void addCardsToDiscard(List<Card> discardedCards) {
+        for(Card card : discardedCards) {
+            discard.add(card);
+        }
+    }
+
+    /**
+     * Are there any cards in the discard pile?
+     */
+    public boolean hasDiscardedCards() {
+        return discard.size() > 0;
+    }
+
+    /**
+     * Is the Deck empty?
+     */
+    public boolean isDeckEmpty() {
+        return deck.size() == 0;
+    }
+
 
     private void createDeck() {
         deck.clear();

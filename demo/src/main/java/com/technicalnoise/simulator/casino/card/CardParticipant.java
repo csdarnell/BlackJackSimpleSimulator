@@ -1,13 +1,13 @@
 package com.technicalnoise.simulator.casino.card;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.technicalnoise.simulator.global.Participant;
 
 public abstract class CardParticipant extends Participant implements OtherParticipantSeat {
 
-    protected Seat seat;
-    protected ArrayList<OtherParticipantSeat> participantSeats;
+    protected PlayerSeat seat;
+    protected List<OtherParticipantSeat> participantSeats;
 
     /**
      * @return String return the Participant's name
@@ -16,7 +16,7 @@ public abstract class CardParticipant extends Participant implements OtherPartic
         return this.getName();
     }
 
-    public CardParticipant(String participantName, Seat seat, ArrayList<OtherParticipantSeat> participantSeats) {
+    public CardParticipant(String participantName, PlayerSeat seat, List<OtherParticipantSeat> participantSeats) {
         super(participantName);
 
         this.seat = seat;

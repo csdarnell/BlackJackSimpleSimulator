@@ -1,13 +1,9 @@
-package com.technicalnoise.simulator.blackjack.demo;
+package com.technicalnoise.simulator.casino.card.games.blackjack.basic;
 
-// import org.springframework.boot.SpringApplication;
-// import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-// @SpringBootApplication
 public class BasicBlackJackApplication {
 
 	public static void main(String[] args) {
-		// SpringApplication.run(DemoApplication.class, args);
+		
 	}
 
 }

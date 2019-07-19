@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Define the way that a Dealer can interface with a Seat;  Primarily used for Card management
  */
-public interface DealerSeatInterface {
+public interface DealerSeatInteraction {
     
     /**
      * Provide a new Card to the Seat
