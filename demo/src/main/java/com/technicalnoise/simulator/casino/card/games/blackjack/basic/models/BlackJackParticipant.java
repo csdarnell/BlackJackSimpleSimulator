@@ -1,17 +1,17 @@
 package com.technicalnoise.simulator.casino.card.games.blackjack.basic.models;
 
-import java.util.List;
-import com.technicalnoise.simulator.casino.card.*;
-
-public class BlackjackParticipant extends CardParticipant {
+public interface BlackjackParticipant {
  
-    public BlackjackParticipant(String participantName, PlayerSeat seat, List<OtherParticipantSeat> participantSeats) {
-        super(participantName, seat, participantSeats);
-    }
-
-    void DecideHitOrStand() {
-
-    }
-    void Hit() {}
-    void Stand() {}
+    /**
+     * The Participant must decide whether it will Hit or Stand
+     */
+    void DecideHitOrStand();
+    /**
+     * The action to take if the Participant Hits
+     */
+    void Hit();
+    /**
+     * The action to take if the Participant Stands
+     */
+    void Stand();
 }

@@ -5,7 +5,7 @@ package com.technicalnoise.simulator.global;
  */
 public abstract class Participant {
     private String name;
-    protected String playerType = "Participant";
+    protected String participantType = "Participant";
 
     public Participant (String name) {
         this.name = name;
@@ -17,8 +17,8 @@ public abstract class Participant {
         return name;
     }
 
-    public String getPlayerType() {
-        return this.playerType;
+    public String getParticipantType() {
+        return this.participantType;
     }
 
     public void performTurn() {}

@@ -50,7 +50,7 @@ public abstract class Seat implements DealerSeatInteraction, PlayerSeat, OtherPa
      * @return String return the Participant's type
      */
     public String getParticipantType(){
-        return this.participant.getPlayerType();
+        return this.participant.getParticipantType();
     }
 
     /**
