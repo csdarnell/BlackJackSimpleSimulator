@@ -5,18 +5,17 @@ import java.util.Collections;
 import java.util.List;
 
 import com.technicalnoise.simulator.global.*;
-import com.technicalnoise.simulator.global.services.UserCommService;
 
 /**
  * A Seat represents the "interface" between a Participant and the Table
  */
-public abstract class Seat implements DealerSeatInteraction, PlayerSeat, OtherParticipantSeat {
-    private Table gameTable;
+public abstract class CardSeat implements DealerSeatInteraction, PlayerSeat, OtherParticipantSeat {
+    private CardTable gameTable;
     private Participant participant;
     private ArrayList<Card> visibleCards = new ArrayList<Card>();
     private ArrayList<Card> hiddenCards = new ArrayList<Card>();;
     
-    public Seat(Table table, Participant player) {
+    public CardSeat(CardTable table, Participant player) {
         this.gameTable = table;
         this.participant = player;
     }

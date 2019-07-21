@@ -1,8 +1,8 @@
 package com.technicalnoise.simulator.blackjack.demo.services;
 
-import com.technicalnoise.simulator.casino.card.Table;
+import com.technicalnoise.simulator.casino.card.CardTable;
 
 public interface TableService {
-    Table table;
+    CardTable table;
     
 }

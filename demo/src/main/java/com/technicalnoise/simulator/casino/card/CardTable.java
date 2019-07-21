@@ -10,7 +10,7 @@ import com.technicalnoise.simulator.casino.card.TableCardManagement;
 /**
  * A generic representation of a card game table and is generally responsible for managing the game; primarily consisting of the Dealer, Seats, for players, and a card Deck.
  */
-public abstract class Table implements TableCardManagement {
+public abstract class CardTable implements TableCardManagement {
     // private Dealer dealer;
     private ArrayList<OtherParticipantSeat> seats;
 
@@ -20,7 +20,7 @@ public abstract class Table implements TableCardManagement {
 
     private boolean gameOver = false;
     
-    public Table() {
+    public CardTable() {
         createDeck();
         shuffleCardDeck();
     }

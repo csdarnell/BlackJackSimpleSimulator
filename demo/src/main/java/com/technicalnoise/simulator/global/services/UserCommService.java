@@ -7,4 +7,10 @@ public interface UserCommService {
      * @return String The user's response
      */
     String getUserInput(String message);
+
+    /**
+     * Provide information to the user, without expecting a response.
+     * @param message
+     */
+    void provideUserFeedback(String message);
 }

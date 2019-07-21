@@ -7,7 +7,7 @@ import com.technicalnoise.simulator.global.Participant;
 
 public class BlackJackDealer extends CardDealer implements BlackjackParticipant {
 
-    public BlackJackDealer(String name, Seat seat, List<OtherParticipantSeat> participantSeats,
+    public BlackJackDealer(String name, CardSeat seat, List<OtherParticipantSeat> participantSeats,
             TableCardManagement cardManagement, TableStatusManagement tableStatusManagement) {
         super(name, seat, participantSeats, cardManagement, tableStatusManagement);
     }

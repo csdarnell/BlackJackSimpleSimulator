@@ -7,7 +7,7 @@ import java.util.List;
  */
 public abstract class CardPlayer extends CardParticipant {
 
-    public CardPlayer(String name, Seat seat, List<OtherParticipantSeat> participantSeats) {
+    public CardPlayer(String name, CardSeat seat, List<OtherParticipantSeat> participantSeats) {
         super(name, seat, participantSeats);
         this.participantType = "Player";
     }
