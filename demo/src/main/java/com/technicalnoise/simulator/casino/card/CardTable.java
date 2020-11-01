@@ -6,13 +6,16 @@ import java.util.Locale;
 import java.util.Random;
 
 import com.technicalnoise.simulator.casino.card.TableCardManagement;
+import com.technicalnoise.simulator.global.services.UserCommService;
 
 /**
  * A generic representation of a card game table and is generally responsible for managing the game; primarily consisting of the Dealer, Seats, for players, and a card Deck.
  */
-public abstract class CardTable implements TableCardManagement {
+public abstract class CardTable implements TableCardManagement, TableStatusManagement {
     // private Dealer dealer;
     private ArrayList<OtherParticipantSeat> seats;
+
+    private UserCommService userCommService;
 
     // TODO:  Manage the Deck as a QUEUE???  Maybe;  Is there a Queue in this language????
     private ArrayList<Card> deck = new ArrayList<Card>();
@@ -20,7 +23,8 @@ public abstract class CardTable implements TableCardManagement {
 
     private boolean gameOver = false;
     
-    public CardTable() {
+    public CardTable(UserCommService userCommService) {
+        this.userCommService = userCommService;
         createDeck();
         shuffleCardDeck();
     }
@@ -53,18 +57,18 @@ public abstract class CardTable implements TableCardManagement {
      * Display the visible contents of the table
      */
     public void showTable() {
-        System.out.println("--- Table Contents ----------");
+        this.userCommService.provideUserFeedback("--- Table Contents ----------");
         seats.forEach((s) -> {
-            System.out.println("------ Participant -------");
-            System.out.println(String.format(Locale.US, "Player Name: {0}", s.getParticipantName()));
-            System.out.println(String.format(Locale.US, "Player Type: ", s.getParticipantType()));
-            System.out.println("--------- Hand ----");
+            this.userCommService.provideUserFeedback("------ Participant -------");
+            this.userCommService.provideUserFeedback(String.format(Locale.US, "Player Name: {0}", s.getParticipantName()));
+            this.userCommService.provideUserFeedback(String.format(Locale.US, "Player Type: ", s.getParticipantType()));
+            this.userCommService.provideUserFeedback("--------- Hand ----");
             List<Card> participantCards = s.viewCards(null);
             for (Card c : participantCards) {
                 System.out.print(String.format("|{0} {1}|", c.getFace(), c.getClass()));
             }
             
-            System.out.println("");
+            this.userCommService.provideUserFeedback("");
         });
 
     }

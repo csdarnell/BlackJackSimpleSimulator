@@ -22,6 +22,7 @@ public abstract class CardParticipant extends Participant implements OtherPartic
         this.seat = seat;
         this.participantSeats = participantSeats;
 
+        seat.setPlayer(this);
     }
 
 

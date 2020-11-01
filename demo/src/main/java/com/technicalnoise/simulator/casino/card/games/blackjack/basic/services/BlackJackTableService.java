@@ -1,6 +1,6 @@
-package com.technicalnoise.simulator.blackjack.demo.services;
+package com.technicalnoise.simulator.casino.card.games.blackjack.basic.services;
 
-public class BlackJackTableService implements TableService {
+public class BlackjackTableService implements TableService {
 
 
 }

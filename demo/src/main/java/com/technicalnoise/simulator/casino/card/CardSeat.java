@@ -11,13 +11,12 @@ import com.technicalnoise.simulator.global.*;
  */
 public abstract class CardSeat implements DealerSeatInteraction, PlayerSeat, OtherParticipantSeat {
     private CardTable gameTable;
-    private Participant participant;
+    private Participant player;
     private ArrayList<Card> visibleCards = new ArrayList<Card>();
     private ArrayList<Card> hiddenCards = new ArrayList<Card>();;
     
-    public CardSeat(CardTable table, Participant player) {
+    public CardSeat(CardTable table) {
         this.gameTable = table;
-        this.participant = player;
     }
     
     public void addCard(Card card) {
@@ -38,18 +37,22 @@ public abstract class CardSeat implements DealerSeatInteraction, PlayerSeat, Oth
         return Collections.unmodifiableList(returnedCards);
     }
 
+    public void setPlayer(Participant player) {
+        this.player = player;
+    }
+
     /**
      * @return String return the Participant's name
      */
     public String getParticipantName() {
-        return this.participant.getName();
+        return this.player.getName();
     }
 
     /**
      * @return String return the Participant's type
      */
     public String getParticipantType(){
-        return this.participant.getParticipantType();
+        return this.player.getParticipantType();
     }
 
     /**
@@ -63,7 +66,7 @@ public abstract class CardSeat implements DealerSeatInteraction, PlayerSeat, Oth
             viewableCards.add(card);
         }
 
-        boolean showHiddenCards = (requestingParticipant != null && requestingParticipant == this.participant) || (gameTable.isGameOver());
+        boolean showHiddenCards = (requestingParticipant != null && requestingParticipant == this.player) || (gameTable.isGameOver());
         Card dummyCard = new Card("X","X",0);
         for ( Card card : hiddenCards) {
             if (showHiddenCards) {

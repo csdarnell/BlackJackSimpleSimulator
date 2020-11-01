@@ -10,4 +10,10 @@ public interface PlayerSeat {
      * @param requestingParticipant
      */
     List<Card> viewCards(Participant requestingParticipant);
+
+    /**
+     * set the Player for this seat
+     * @param Participant The player that is sitting in the seat
+     */
+    void setPlayer(Participant player);
 }

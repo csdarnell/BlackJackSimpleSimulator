@@ -5,9 +5,9 @@ import java.util.List;
 import com.technicalnoise.simulator.casino.card.*;
 import com.technicalnoise.simulator.global.Participant;
 
-public class BlackJackDealer extends CardDealer implements BlackjackParticipant {
+public class BlackjackDealer extends CardDealer implements BlackjackParticipant {
 
-    public BlackJackDealer(String name, CardSeat seat, List<OtherParticipantSeat> participantSeats,
+    public BlackjackDealer(String name, BlackjackSeat seat, List<OtherParticipantSeat> participantSeats,
             TableCardManagement cardManagement, TableStatusManagement tableStatusManagement) {
         super(name, seat, participantSeats, cardManagement, tableStatusManagement);
     }
